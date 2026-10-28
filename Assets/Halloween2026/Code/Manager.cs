@@ -12,6 +12,7 @@ namespace N_Awakening.Halloween
         [SerializeField] Image[] _misses;
         [SerializeField] Image[] _health;
         [SerializeField] Player _player;
+        [SerializeField] FallManager _fall;
         [SerializeField] GameObject _multiplier;
 
         #endregion
@@ -29,6 +30,7 @@ namespace N_Awakening.Halloween
         protected void EndGame()
         {
             _player.EndGame();
+            _fall.EndGame();
             Cursor.lockState = CursorLockMode.None;
         }
 
@@ -53,7 +55,7 @@ namespace N_Awakening.Halloween
 
         public void AddMiss()
         {
-            if (_missAmount < 3)
+            if (_missAmount < 2)
             {
                 _misses[_missAmount].color = Color.red;
                 ++_missAmount;
@@ -62,6 +64,7 @@ namespace N_Awakening.Halloween
             {
                 for (int i = 0; i< _misses.Length; i++)
                     _misses[i].color = Color.black;
+                _missAmount = 0;   
                 ReduceHealth();
             }
         }

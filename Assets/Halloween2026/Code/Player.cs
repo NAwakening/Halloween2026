@@ -61,12 +61,12 @@ namespace N_Awakening.Halloween
                     _manager.ReduceHealth();
                 other.gameObject.SetActive(false);
             }
-            else if (other.CompareTag("PowerUP"))
+            else if (other.CompareTag("PowerUp"))
             {
                 switch (other.gameObject.GetComponent<PowerUp>().GetPowerUP)
                 {
                     case PowerUps.SIZE:
-                        transform.localScale = Vector3.one * 2;
+                        transform.localScale = new Vector3 (2, 2, 1);
                         if (_sizeCoroutine != null)
                         {
                             StopCoroutine( _sizeCoroutine);

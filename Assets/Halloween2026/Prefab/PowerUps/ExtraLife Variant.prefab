@@ -156,6 +156,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -205270267638800340, guid: bc491169034ad1449a72a4d3d4e0acc6, type: 3}
     - target: {fileID: 6257996111819075725, guid: 70d3ee4623b158b4fbc2015750e12fe0, type: 3}
+      propertyPath: powerUp
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257996111819075725, guid: 70d3ee4623b158b4fbc2015750e12fe0, type: 3}
       propertyPath: _fallSpeed
       value: 4
       objectReference: {fileID: 0}
