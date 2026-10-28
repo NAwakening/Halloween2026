@@ -23,7 +23,6 @@ namespace N_Awakening.Halloween
         #region RuntimeVariables
 
         bool _canMove;
-        bool _gameEnded;
         float _direction;
         bool _hasMultiplier;
         bool _hasShield;
@@ -36,7 +35,7 @@ namespace N_Awakening.Halloween
         
         void Update()
         {
-            if (_canMove && !_gameEnded)
+            if (_canMove)
                 _rb.linearVelocityX = _direction * _speed;
         }
 
@@ -66,7 +65,7 @@ namespace N_Awakening.Halloween
                 switch (other.gameObject.GetComponent<PowerUp>().GetPowerUP)
                 {
                     case PowerUps.SIZE:
-                        transform.localScale = new Vector3 (2, 2, 1);
+                        transform.localScale = new Vector3 (2, 1.5f, 1);
                         if (_sizeCoroutine != null)
                         {
                             StopCoroutine( _sizeCoroutine);
@@ -117,9 +116,7 @@ namespace N_Awakening.Halloween
 
         public void EndGame()
         {
-            _gameEnded = true;
-            _direction = 0f;
-            _rb.linearVelocityX = 0f;
+            gameObject.SetActive(false);
         }
 
         #endregion

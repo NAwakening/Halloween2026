@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace N_Awakening.Halloween
@@ -16,6 +17,8 @@ namespace N_Awakening.Halloween
         {
             if (other.CompareTag("Candy"))
                 manager.AddMiss();
+            else if (other.CompareTag("Player"))
+                return;
             other.gameObject.SetActive(false);
         }
 

@@ -141,6 +141,19 @@ namespace N_Awakening.Halloween
         public void EndGame()
         {
             StopAllCoroutines();
+            for (int i = 0; i < 3; i++)
+            {
+                _rainbowCandy[i].SetActive(false);
+                _cornCandy[i].SetActive(false);
+                _wrappedCandy[i].SetActive(false);
+                _jellyCandy[i].SetActive(false);
+                _sword[i].SetActive(false);
+                _axe[i].SetActive(false);
+                _sizePowerUp[i].SetActive(false);
+                _multiplierPowerUp[i].SetActive(false);
+                _shieldPowerUp[i].SetActive(false);
+                _extraLife[i].SetActive(false);
+            }
         }
 
         #endregion
