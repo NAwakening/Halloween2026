@@ -584,7 +584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &188864397
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4949,6 +4949,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _score: {fileID: 420428497}
+  _finalScore: {fileID: 588133770}
+  _nickname: {fileID: 1709995224}
   _misses:
   - {fileID: 100138246}
   - {fileID: 2050098470}
@@ -4960,6 +4962,10 @@ MonoBehaviour:
   _player: {fileID: 948057681}
   _fall: {fileID: 371004140}
   _multiplier: {fileID: 603787965}
+  _endPanel: {fileID: 1854890004}
+  _newHighScore: {fileID: 1368512356}
+  _nameError: {fileID: 188864396}
+  _highscore: {fileID: 0}
 --- !u!1 &1825828532 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1139296720826787207, guid: a11491fc5e941c3469f3603bb2d206ca, type: 3}

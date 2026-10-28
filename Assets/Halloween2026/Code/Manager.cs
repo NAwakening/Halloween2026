@@ -9,11 +9,18 @@ namespace N_Awakening.Halloween
         #region References
 
         [SerializeField] TextMeshProUGUI _score;
+        [SerializeField] TextMeshProUGUI _finalScore;
+        [SerializeField] TextMeshProUGUI _nickname;
         [SerializeField] Image[] _misses;
         [SerializeField] Image[] _health;
         [SerializeField] Player _player;
         [SerializeField] FallManager _fall;
         [SerializeField] GameObject _multiplier;
+        [SerializeField] GameObject _endPanel;
+        [SerializeField] GameObject _newHighScore;
+        [SerializeField] GameObject _nameError;
+        
+        [SerializeField] Score _highscore;
 
         #endregion
 
@@ -32,6 +39,10 @@ namespace N_Awakening.Halloween
             _player.EndGame();
             _fall.EndGame();
             Cursor.lockState = CursorLockMode.None;
+            _endPanel.SetActive(true);
+            _finalScore.text = _scoreAmount.ToString();
+            if (_scoreAmount > _highscore.topTen[0].score)
+                _newHighScore.SetActive(true);
         }
 
         #endregion
@@ -89,6 +100,31 @@ namespace N_Awakening.Halloween
         public void ChangeMultiplier(bool p_value)
         {
             _multiplier.SetActive(p_value);
+        }
+
+        public void SubmitScore()
+        {
+            if (_nickname.text == "")
+                _nameError.SetActive(true);
+            else
+            {
+                int _currentScore = _scoreAmount;
+                string _currentName = _nickname.text;
+                int _pastScore;
+                string _pastName;
+                for (int i = 0; i < _highscore.topTen.Length; ++i)
+                {
+                    if (_currentScore < _highscore.topTen[i].score)
+                    {
+                        _pastScore = _highscore.topTen[i].score;
+                        _pastName = _highscore.topTen[i].name;
+                        _highscore.topTen[i].score = _currentScore;
+                        _highscore.topTen[i].name = _currentName;
+                        _currentScore = _pastScore;
+                        _currentName = _pastName;
+                    }
+                }
+            }
         }
 
         #endregion
