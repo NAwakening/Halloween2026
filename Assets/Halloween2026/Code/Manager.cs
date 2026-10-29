@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace N_Awakening.Halloween
 {
@@ -91,9 +92,10 @@ namespace N_Awakening.Halloween
 
         public void ReduceHealth()
         {
-            --_healthAmount;
-            _health[_healthAmount].color = Color.black;
-            if (_healthAmount == 0)
+            _healthAmount -= 1;
+            if (_healthAmount >= 0)
+                _health[_healthAmount].color = Color.black;
+            if (_healthAmount <= 0)
                 EndGame();
         }
 
@@ -114,7 +116,7 @@ namespace N_Awakening.Halloween
                 string _pastName;
                 for (int i = 0; i < _highscore.topTen.Length; ++i)
                 {
-                    if (_currentScore < _highscore.topTen[i].score)
+                    if (_currentScore > _highscore.topTen[i].score)
                     {
                         _pastScore = _highscore.topTen[i].score;
                         _pastName = _highscore.topTen[i].name;
@@ -124,6 +126,7 @@ namespace N_Awakening.Halloween
                         _currentName = _pastName;
                     }
                 }
+                SceneManager.LoadScene(0);
             }
         }
 
